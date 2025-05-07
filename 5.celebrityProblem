@@ -1,0 +1,25 @@
+class Solution {
+    public int celebrity(int mat[][]) {
+    //i(row) -> shows whom i know
+    //j(col) -> shows who knows me
+     int n= mat.length;
+     int[] knowMe = new int[n];
+     int[] iKnow = new int[n];
+     for(int i=0;i<n;i++){
+         for(int j=0;j<n;j++){
+             if(mat[i][j]==1 && i!=j){
+                iKnow[i]+=1;
+                knowMe[j]+=1;
+             }
+         }
+     }
+     
+     for(int i=0;i<n;i++){
+         if(iKnow[i]==0 && knowMe[i]==n-1)
+         return i;
+     }
+     
+     return -1;
+        
+    }
+}
